@@ -12,6 +12,15 @@ namespace ATMApp
 
         private UserAccount selectedAccount;
 
+        public void Run()
+        {
+            AppScreen.Welcome();
+
+            CheckUserCardNumAndPassword();
+
+            AppScreen.WelcomeCustomer(selectedAccount.FullName);
+        }
+
         public void InitializeData()
         {
             userAccountList = new List<UserAccount>
@@ -78,12 +87,7 @@ namespace ATMApp
 
         }
 
-        public void Welcome()
-        {
-
-            Console.WriteLine($"Welcome back, {selectedAccount.FullName}");
-            Utility.PressEnterToContinue();
-        }
+       
 
 
     }

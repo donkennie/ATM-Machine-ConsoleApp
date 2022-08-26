@@ -12,14 +12,11 @@ namespace ATMApp.APP
 
         static void Main(string[] args)
         {
-            while (true)
-            {
-                AppScreen.Welcome();
+  
                 ATMApp atmApp = new ATMApp();
                 atmApp.InitializeData();
-                atmApp.CheckUserCardNumAndPassword();
-                atmApp.Welcome();
-            }
+
+                atmApp.Run();          
         }
 
     }

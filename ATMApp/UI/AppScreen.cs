@@ -59,6 +59,12 @@ namespace ATMApp.UI
             Environment.Exit(1);
         }
 
+        internal static void WelcomeCustomer(string fullname)
+        {
+
+            Console.WriteLine($"Welcome back, {fullname}");
+            Utility.PressEnterToContinue();
+        }
 
     }
 }
