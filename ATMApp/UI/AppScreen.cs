@@ -10,6 +10,8 @@ namespace ATMApp.UI
     public static class AppScreen
     {
 
+        internal const string cur = "N ";
+
         internal static void Welcome()
         {
 
@@ -64,6 +66,28 @@ namespace ATMApp.UI
 
             Console.WriteLine($"Welcome back, {fullname}");
             Utility.PressEnterToContinue();
+        }
+
+
+        internal static void DisplayAppMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("-------My ATM App Menu-------");
+            Console.WriteLine(":                           :");
+            Console.WriteLine("1. Account Balance          :");
+            Console.WriteLine("2. Cash Deposit             :");
+            Console.WriteLine("3. Withdrawal               :");
+            Console.WriteLine("4. Transfer                 :");
+            Console.WriteLine("5. Transactions             :");
+            Console.WriteLine("6. Logout                   :");
+        }
+
+
+        internal static void LogoutProgress()
+        {
+            Console.WriteLine("Thank you for using My ATM App.");
+            Utility.PrintDotAnimation();
+            Console.Clear();
         }
 
     }
