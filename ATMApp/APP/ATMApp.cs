@@ -3,7 +3,7 @@ using ATMApp.Domain.Entities;
 using ATMApp.Domain.Enums;
 using ATMApp.Domain.Interfaces;
 using ATMApp.UI;
-
+using ConsoleTables;
 
 namespace ATMApp
 {
@@ -17,7 +17,12 @@ namespace ATMApp
 
         private const decimal minimumKeptAmount = 500;
 
-      //  private readonly AppScreen screen;
+        private readonly AppScreen screen;
+
+        public ATMApp()
+        {
+            screen = new AppScreen();
+        }
 
 
         public void Run()
@@ -28,9 +33,14 @@ namespace ATMApp
 
             AppScreen.WelcomeCustomer(selectedAccount.FullName);
 
-            AppScreen.DisplayAppMenu();
+            while (true)
+            {
 
-            ProcessMenuoption();
+                AppScreen.DisplayAppMenu();
+
+                ProcessMenuoption();
+
+            }
         }
 
         public void InitializeData()
@@ -38,7 +48,7 @@ namespace ATMApp
             userAccountList = new List<UserAccount>
             {
                 new UserAccount{Id=1, FullName = "Uche Angela", AccountNumber=123456,CardNumber =321321, CardPin=123123,AccountBalance=50000.00m,IsLocked=false},
-                new UserAccount{Id=2, FullName = "Amaka Hope", AccountNumber=456789,CardNumber =654654, CardPin=456456,AccountBalance=4000.00m,IsLocked=false},
+                new UserAccount{Id=2, FullName = "Don Kennie", AccountNumber=456789,CardNumber =654654, CardPin=456456,AccountBalance=4000.00m,IsLocked=false},
                 new UserAccount{Id=3, FullName = "Femi Sunday", AccountNumber=123555,CardNumber =987987, CardPin=789789,AccountBalance=2000.00m,IsLocked=true},
             };
 
@@ -115,11 +125,11 @@ namespace ATMApp
                     MakeWithDrawal();
                     break;
                 case (int)AppMenu.InternalTransfer:
-                   // var internalTransfer = screen.InternalTransferForm();
-                   // ProcessInternalTransfer(internalTransfer);
+                    var internalTransfer = screen.InternalTransferForm();
+                    ProcessInternalTransfer(internalTransfer);
                     break;
                 case (int)AppMenu.ViewTransaction:
-                 //   ViewTransaction();
+                    ViewTransaction();
                     break;
                 case (int)AppMenu.Logout:
                     AppScreen.LogoutProgress();
@@ -279,7 +289,7 @@ namespace ATMApp
 
         public void ViewTransaction()
         {
-           /* var filteredTransactionList = _listOfTransactions.Where(t => t.UserBankAccountId == selectedAccount.Id).ToList();
+            var filteredTransactionList = _listOfTransactions.Where(t => t.UserBankAccountId == selectedAccount.Id).ToList();
             //check if there's a transaction
             if (filteredTransactionList.Count <= 0)
             {
@@ -287,7 +297,7 @@ namespace ATMApp
             }
             else
             {
-              //  var table = new ConsoleTable("Id", "Transaction Date", "Type", "Descriptions", "Amount " + AppScreen.cur);
+                var table = new ConsoleTable("Id", "Transaction Date", "Type", "Descriptions", "Amount " + AppScreen.cur);
                 foreach (var tran in filteredTransactionList)
                 {
                     table.AddRow(tran.TransactionId, tran.TransactionDate, tran.TransactionType, tran.Descriprion, tran.TransactionAmount);
@@ -295,7 +305,7 @@ namespace ATMApp
                 table.Options.EnableCount = false;
                 table.Write();
                 Utility.PrintMessage($"You have {filteredTransactionList.Count} transaction(s)", true);
-            }*/
+            }
         }
 
 
