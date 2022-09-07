@@ -32,7 +32,7 @@ namespace ATMApp.UI
 
                 ConsoleKeyInfo inputKey = Console.ReadKey(true);
 
-                if (inputKey.Key == ConsoleKey.Enter)
+            if (inputKey.Key == ConsoleKey.Enter)
                 {
                     if (input.Length == 6)
                     {
@@ -105,7 +105,7 @@ namespace ATMApp.UI
         }
 
         public static void PressEnterToContinue()
-        {
+            {
             Console.WriteLine("\n\nPress Enter to continue...\n");
             Console.ReadLine();
         }
